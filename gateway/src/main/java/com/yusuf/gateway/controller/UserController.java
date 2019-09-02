@@ -2,7 +2,6 @@ package com.yusuf.gateway.controller;
 
 import com.yusuf.gateway.model.MongoUserDetails;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

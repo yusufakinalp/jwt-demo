@@ -2,7 +2,6 @@ package com.yusuf.gateway.controller;
 
 import com.yusuf.gateway.model.AuthResponse;
 import com.yusuf.gateway.model.LoginRequest;
-import com.yusuf.gateway.model.User;
 import com.yusuf.gateway.service.ILoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -10,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
