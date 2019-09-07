@@ -25,6 +25,11 @@ public class BlogController {
         return ResponseEntity.ok(blogRepository.findAll());
     }
 
+    @GetMapping("/myblogs")
+    public ResponseEntity getMyBlogs(@AuthenticationPrincipal UserDetails userDetails){
+        return ResponseEntity.ok(blogRepository.findByUsername(userDetails.getUsername()));
+    }
+
     @PostMapping("/blog")
     public ResponseEntity addBlog(@AuthenticationPrincipal UserDetails userDetails, @RequestBody Blog blog){
         blog.setUsername(userDetails.getUsername());
