@@ -1,6 +1,5 @@
-package com.yusuf.gateway.security;
+package com.yusuf.comment.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -17,9 +16,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private JwtTokenProvider jwtTokenProvider;
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
@@ -31,18 +27,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // Entry points
         http.authorizeRequests()
-                .antMatchers("/**/signin/**").permitAll()
-                .antMatchers("/**/signup/**").permitAll()
-                .antMatchers("/**/blog/**").permitAll()
-                .antMatchers("/**/comment/**").permitAll()
                 // Disallow everything else..
                 .anyRequest().authenticated();
 
-        // If a user try to access a resource without having enough permissions
-        http.exceptionHandling().accessDeniedPage("/login");
-
         // Apply JWT
-        http.apply(new JwtTokenFilterConfigurer(jwtTokenProvider));
+        http.apply(new JwtTokenFilterConfigurer());
 
         // Optional, if you want to test the API from a browser
         // http.httpBasic();
